@@ -35,21 +35,21 @@ jobs:
         run: |
           # 方法1: 尝试使用 wget（更稳定）
           echo "Trying wget..."
-          if wget -q -O range-temp.txt "https://api.edgeone.ai/ips?version=v4&area=mainland-china"; then
+          if wget -q -O range-temp.txt "https://api.edgeone.ai/ips?version=v4&area=overseas"; then
             echo "Download successful using wget"
             exit 0
           fi
           
           # 方法2: 尝试使用 curl 但禁用 HTTP/2
           echo "wget failed, trying curl without HTTP/2..."
-          if curl -s --http1.1 "https://api.edgeone.ai/ips?version=v4&area=mainland-china" -o range-temp.txt; then
+          if curl -s --http1.1 "https://api.edgeone.ai/ips?version=v4&area=overseas" -o range-temp.txt; then
             echo "Download successful using curl --http1.1"
             exit 0
           fi
           
           # 方法3: 尝试使用 curl 但宽松处理
           echo "curl --http1.1 failed, trying curl with insecure flag..."
-          if curl -s -k --http1.1 "https://api.edgeone.ai/ips?version=v4&area=mainland-china" -o range-temp.txt; then
+          if curl -s -k --http1.1 "https://api.edgeone.ai/ips?version=v4&area=overseas" -o range-temp.txt; then
             echo "Download successful using curl -k"
             exit 0
           fi
