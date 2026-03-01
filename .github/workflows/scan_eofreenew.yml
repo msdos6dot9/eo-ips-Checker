@@ -35,7 +35,7 @@ jobs:
       run: |
         python scan_freenew.py
       env:
-        CONCURRENCY: 55
+        CONCURRENCY: 20
         TIMEOUT: 12.0
         RANGE_FILE: range.txt
         
