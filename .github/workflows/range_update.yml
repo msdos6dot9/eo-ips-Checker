@@ -157,7 +157,9 @@ jobs:
           # 配置Git并提交
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git stash
           git pull origin ${{ github.ref_name }} --rebase
+          git stash pop
           git add range.txt
           git commit -m "$commit_msg"
           git push origin HEAD:${{ github.ref_name }}
