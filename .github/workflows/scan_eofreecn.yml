@@ -6,7 +6,7 @@ on:
     branches: [ main ]
     paths: [ 'scan_freenew.py' ]
   schedule:
-    - cron: '45 3 */7 * *'
+    - cron: '00 10 * * 4'
 
 concurrency:
   group: scanner
