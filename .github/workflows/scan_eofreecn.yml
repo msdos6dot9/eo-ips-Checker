@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [ main ]
-    paths: [ 'scan_freenew.py' ]
+    paths: [ 'scan_freecn.py' ]
   schedule:
     - cron: '00 10 * * 4'
 
@@ -19,6 +19,8 @@ jobs:
     steps:
     - name: Check
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
       
     - name: Set Python
       uses: actions/setup-python@v5
@@ -52,4 +54,5 @@ jobs:
         git config --local user.name "GitHub Action"
         git add available_eofreecn_ips.txt
         git commit -m "📈 $(date +'%Y-%m-%d %H:%M:%S')" || exit 0
+        git pull --rebase origin main || true
         git push
